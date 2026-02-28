@@ -23,12 +23,12 @@ RUN mkdir -p /root/.vnc && \
 
 EXPOSE 5901
 #EXPOSE 7860
-EXPOSE 7860
+EXPOSE 6080
 
 CMD bash -c "\
     rm -f /tmp/.X1-lock /tmp/.X11-unix/X1 && \
     vncserver :1 -localhost no -SecurityTypes None -geometry 1024x768 -depth 24 --I-KNOW-THIS-IS-INSECURE && \
     sleep 3 && \
     openssl req -new -subj '/C=JP' -x509 -days 365 -nodes -out /self.pem -keyout /self.pem && \
-    websockify -D --web=/usr/share/novnc/ --cert=/self.pem 7860 localhost:5901 && \
+    websockify -D --web=/usr/share/novnc/ --cert=/self.pem 6080 localhost:5901 && \
     tail -f /dev/null"
