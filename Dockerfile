@@ -22,6 +22,7 @@ RUN mkdir -p /root/.vnc && \
     chmod +x /root/.vnc/xstartup
 
 EXPOSE 5901
+#EXPOSE 7860
 EXPOSE 7860
 
 CMD bash -c "\
